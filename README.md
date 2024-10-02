@@ -1,2 +1,2 @@
-# kube_lean
+# kube_learn
 Изучение кубера
