@@ -19,10 +19,10 @@ spec:
         image: jetbrains/teamcity-server:2024.07.2
         ports:
         - containerPort: 80
-        volumeMounts:
-        - name: teamcity-persistent-storage
-          mountPath: /data/teamcity_server/datadir
-      volumes:
-      - name: teamcity-persistent-storage
-        persistentVolumeClaim:
-          claimName: teamcity-pv-claim
+      #   volumeMounts:
+      #   - name: teamcity-persistent-storage
+      #     mountPath: /data/teamcity_server/datadir
+      # volumes:
+      # - name: teamcity-persistent-storage
+      #   persistentVolumeClaim:
+      #     claimName: teamcity-pv-claim
