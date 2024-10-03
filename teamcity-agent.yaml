@@ -18,5 +18,8 @@ spec:
       containers:
       - name: teamcity-agent
         image: jetbrains/teamcity-agent
+        env:
+        - name: SERVER_URL
+          value: "http://localhost:8111"
         ports:
-        - containerPort: 8081
+        - containerPort: 9090
