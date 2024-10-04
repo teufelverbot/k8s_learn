@@ -20,6 +20,6 @@ spec:
         image: jetbrains/teamcity-minimal-agent:2024.07.2
         env:
         - name: SERVER_URL
-          value: "${TEAMCITY_SERVER_SVC_SERVICE_HOST}:${TEAMCITY_SERVER_SVC_SERVICE_PORT_TCAGENTIN}"
+          value: ${TEAMCITY_SERVER_SVC_SERVICE_HOST}:${TEAMCITY_SERVER_SVC_SERVICE_PORT_TCAGENTIN}
         ports:
         - containerPort: 9090
