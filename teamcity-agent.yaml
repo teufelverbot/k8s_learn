@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: teamcity-agent
-        image: jetbrains/teamcity-agent:2024.07.2
+        image: jetbrains/teamcity-minimal-agent:2024.07.2
         env:
         - name: SERVER_URL
           value: "http://localhost:8111"
