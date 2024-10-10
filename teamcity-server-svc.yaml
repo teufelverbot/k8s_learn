@@ -6,7 +6,7 @@ spec:
   selector:
     app: teamcity-server
   ports:
-    - name: tcservhttp
+    - name: tchttp
       protocol: TCP
       port: 80
       targetPort: 80
