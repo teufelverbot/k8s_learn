@@ -4,4 +4,4 @@ metadata:
   name: external-svc
 spec:
   type: ExternalName
-  externalName: teamcity-local.com
+  externalName: tc-local.com
