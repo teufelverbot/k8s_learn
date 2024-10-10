@@ -14,7 +14,7 @@ spec:
               service:
                 name: teamcity-server-svc
                 port: 
-                  number: 88
+                  number: 8111
           - pathType: Prefix
             path: /agent
             backend:
