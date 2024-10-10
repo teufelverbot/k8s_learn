@@ -18,8 +18,5 @@ spec:
       - name: teamcity-server
         image: jetbrains/teamcity-server:2024.07.2
         ports:
-        - containerPort: 80
-          name: http
         - containerPort: 8111
-          name: agentin
 
