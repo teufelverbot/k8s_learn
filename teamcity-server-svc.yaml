@@ -6,10 +6,12 @@ spec:
   selector:
     app: teamcity-server
   ports:
-    - protocol: TCP
+    - name: http
+      protocol: TCP
       port: 80
       targetPort: 80
-    - protocol: TCP
+    - name: agent
+      protocol: TCP
       port: 8111
       targetPort: 8111
   type: NodePort
