@@ -9,12 +9,12 @@ spec:
      http:
         paths:
           - pathType: Prefix
-            path: /
+            path: /tc
             backend:
               service:
                 name: teamcity-server-svc
                 port: 
-                  number: 8080
+                  number: 80
           - pathType: Prefix
             path: /agent
             backend:
