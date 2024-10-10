@@ -8,7 +8,7 @@ spec:
      http:
         paths:
           - pathType: Prefix
-            path: /
+            path: /tc
             backend:
               service:
                 name: teamcity-server-svc
@@ -20,11 +20,5 @@ spec:
               service:
                 name: teamcity-agent-svc
                 port: 
-                  number: 80
-          - pathType: Exact
-            path: /v2
-            backend:
-              service:
-                name: kuber-service-v2
-                port: 
-                  number: 80
+                  number: 9090
+
