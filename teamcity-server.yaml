@@ -22,10 +22,10 @@ spec:
         volumeMounts:
         - mountPath: /data/teamcity_server/datadir
           name: db-volume
-          readOnly: true
+          readOnly: false
       volumes:
       - name: db-volume
         # mount /data/foo, but only if that directory already exists
         hostPath:
-          path: /opt/tc_data # directory location on host
-          type: Directory # this field is optional
+          path: /opt/tc_data
+          type: Directory
