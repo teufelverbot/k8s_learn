@@ -8,14 +8,14 @@ spec:
    - host: app.tc-local.com
      http:
         paths:
-          - pathType: Exact
+          - pathType: Prefix
             path: /
             backend:
               service:
                 name: teamcity-server-svc
                 port: 
                   number: 8080
-          - pathType: Exact
+          - pathType: Prefix
             path: /agent
             backend:
               service:
