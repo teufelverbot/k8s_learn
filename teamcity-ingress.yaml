@@ -4,7 +4,7 @@ metadata:
   name: main-ingress
 spec:
   rules:
-   - host: app.tc-local.com
+   - host: tc-local.com
      http:
         paths:
           - pathType: Prefix
