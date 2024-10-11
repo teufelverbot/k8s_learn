@@ -9,7 +9,7 @@ spec:
      http:
         paths:
           - pathType: Prefix
-            path: /tc
+            path: /
             backend:
               service:
                 name: teamcity-server-svc
