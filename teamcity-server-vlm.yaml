@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: teamcity-server
+  labels:
+    app: teamcity-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: teamcity-server
+  template:
+    metadata:
+      labels:
+        app: teamcity-server
+    spec:
+      containers:
+      - name: teamcity-server
+        image: jetbrains/teamcity-server:2024.07.2
+        ports:
+        - containerPort: 8111
+        volumeMounts:
+        - mountPath: /data/teamcity_server/datadir
+          name: db-volume
+      volumes:
+      - name: db-volume
+        # mount /data/foo, but only if that directory already exists
+        hostPath:
+          path: /tmp/tc_data
+          type: DirectoryOrCreate
