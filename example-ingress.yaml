@@ -5,7 +5,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: ip172-18-0-123-cs6h1tqki0og00ajkeag.direct.labs.play-with-k8s.com
+    - host: example.com
       http:
         paths:
           - path: /
