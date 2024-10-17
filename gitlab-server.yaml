@@ -40,13 +40,13 @@ spec:
       volumes:
       - name: gitlab-config
         hostPath:
-          path: /tmp/gl_data/config
+          path: /tmp/volume/gl_data/config
           type: DirectoryOrCreate
       - name: gitlab-logs
         hostPath:
-          path: /tmp/gl_data/logs
+          path: /tmp/volume/gl_data/logs
           type: DirectoryOrCreate
       - name: gitlab-data
         hostPath:
-          path: /tmp/gl_data/data
+          path: /tmp/volume/gl_data/data
           type: DirectoryOrCreate
