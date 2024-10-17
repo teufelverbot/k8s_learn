@@ -17,6 +17,9 @@ spec:
       containers:
       - name: gitlab-server
         image: gitlab/gitlab-ce:17.1.6-ce.0
+        env:
+        - name: GITLAB_OMNIBUS_CONFIG
+          value: "external_url 'http://gitlab.tc-local.com'; gitlab_rails['lfs_enabled'] = true;"
         ports:
         - name: http
           containerPort: 80
