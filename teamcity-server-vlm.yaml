@@ -24,7 +24,6 @@ spec:
           name: db-volume
       volumes:
       - name: db-volume
-        # mount /data/foo, but only if that directory already exists
         hostPath:
-          path: /tmp/tc_data
+          path: /tmp/volume/tc_data
           type: DirectoryOrCreate
