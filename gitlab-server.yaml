@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: gitlab-server
+  labels:
+    app: gitlab-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gitlab-server
+  template:
+    metadata:
+      labels:
+        app: gitlab-server
+    spec:
+      containers:
+      - name: gitlab-server
+        image: gitlab/gitlab-ce:17.1.6-ce.0
+        ports:
+        - name: http
+          containerPort: 80
+          protocol: TCP
+        - name: ssh
+          containerPort: 22
+          protocol: TCP
+        - name: https
+          containerPort: 443
+          protocol: TCP
+        volumeMounts:
+        - name: gitlab-config
+          mountPath: /etc/gitlab
+        - name: gitlab-logs
+          mountPath: /var/log/gitlab
+        - name: gitlab-data
+          mountPath: /var/opt/gitlab
+      volumes:
+      - name: gitlab-config
+        hostPath:
+          path: /tmp/gl_data/config
+          type: DirectoryOrCreate
+      - name: gitlab-logs
+        hostPath:
+          path: /tmp/gl_data/logs
+          type: DirectoryOrCreate
+      - name: gitlab-data
+        hostPath:
+          path: /tmp/gl_data/data
+          type: DirectoryOrCreate
