@@ -44,9 +44,9 @@ spec:
           type: DirectoryOrCreate
       - name: gitlab-logs
         hostPath:
-          path: /mnt/volume/gl_data/logs
+          path: /tmp/volume/gl_data/logs
           type: DirectoryOrCreate
       - name: gitlab-data
         hostPath:
-          path: /mnt/volume/gl_data/data
+          path: /tmp/volume/gl_data/data
           type: DirectoryOrCreate
