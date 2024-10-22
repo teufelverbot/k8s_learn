@@ -25,5 +25,5 @@ spec:
       volumes:
       - name: db-volume
         hostPath:
-          path: /tmp/volume/tc_data
+          path: /mnt/volume/tc_data
           type: DirectoryOrCreate
