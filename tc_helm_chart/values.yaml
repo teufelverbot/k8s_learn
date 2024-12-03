@@ -1,0 +1,32 @@
+replicas: 1
+
+# ports: {}
+serviceType: NodePort
+servicePorts: {}
+
+ports:
+  - name: ""
+    containerPort: 80
+    protocol: TCP
+
+secret:
+  enabled: false
+
+env: []
+
+name: ""
+
+ingress:
+  enabled: false
+
+resources: {}
+
+volumes: []
+
+volumeMounts: []
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

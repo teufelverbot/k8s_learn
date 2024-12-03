@@ -1,0 +1,44 @@
+image: "jetbrains/teamcity-server:2024.07.2"
+name: teamcity-server
+
+secret:
+  enabled: true
+
+servicePorts:
+  - port: 80
+    targetPort: 8111
+
+ports:
+  - containerPort: 8111
+    protocol: TCP
+    name: http
+
+volumeMounts:
+  - mountPath: /data/teamcity_server/datadir
+    name: db-volume
+  - mountPath: /opt/teamcity/.ssh/
+#    subPath: id_ed25519
+    name: privkey
+volumes:
+  - name: db-volume
+    hostPath:
+      path: /mnt/tc_data
+      type: DirectoryOrCreate
+  - name: privkey
+    secret:
+      secretName: secret
+
+ingress:
+  enabled: true
+  className: nginx
+  hosts:
+  - host: tc.tc-local.home
+    pathType: Prefix
+    path: "/"
+    name: teamcity-server-svc
+    number: 80
+  - host: gl.tc-local.home
+    pathType: Prefix
+    path: "/"
+    name: gitlab-server-svc
+    number: 80

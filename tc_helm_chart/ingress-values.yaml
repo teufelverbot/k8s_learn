@@ -1,0 +1,25 @@
+  labels: 
+    app: teamcity
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: tc.tc-local.com
+    http:
+      paths:
+        - pathType: Prefix
+          path: /
+          backend:
+            service:
+              name: teamcity-server-svc
+              port: 
+                number: 8111
+  - host: gl.tc-local.com
+    http:
+      paths:
+        - pathType: Prefix
+          path: /
+          backend:
+            service:
+              name: gitlab-server-svc
+              port: 
+                number: 8080

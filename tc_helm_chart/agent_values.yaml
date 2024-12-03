@@ -1,0 +1,15 @@
+name: teamcity-agent
+replicas: 1
+image: jetbrains/teamcity-minimal-agent:2024.07.2
+env:
+- name: SERVER_URL
+  value: "http://$(TEAMCITY_SERVER_SVC_SERVICE_HOST):$(TEAMCITY_SERVER_SVC_SERVICE_PORT)"
+
+ports:
+  - containerPort: 9090
+
+servicePorts:
+- protocol: TCP
+  port: 9090
+  targetPort: 9090
+serviceType: NodePort
