@@ -1,0 +1,37 @@
+name: mysql-server
+replicas: 1
+image: mysql:5.7
+secret:
+  enabled: true
+env:
+  - name: MYSQL_ROOT_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: mysql-server-secret
+        key: passwordRoot
+  - name: MYSQL_DATABASE
+    value: teamcity
+  - name: MYSQL_USER
+    value: teamcity
+  - name: MYSQL_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: mysql-server-secret
+        key: password
+ports:
+- containerPort: 3306
+  protocol: TCP
+  name: mysql
+
+servicePorts:
+  - port: 3306
+    targetPort: 3306
+
+volumeMounts:
+  - mountPath: /var/lib/mysql
+    name: mysql-volume
+volumes:
+  - name: mysql-volume
+    hostPath:
+      path: /mnt/tc_data
+      type: DirectoryOrCreate
