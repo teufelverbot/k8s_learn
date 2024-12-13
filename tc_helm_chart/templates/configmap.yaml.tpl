@@ -1,4 +1,4 @@
-{{ if $.Values.configMap.datadirConfig }}
+{{- if $.Values.configmap -}}
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -6,9 +6,7 @@ metadata:
   name: {{ $.Values.name }}-datadir-config
 data:
 {{ tpl ($.Values.configMap.datadirConfig | toYaml) $ | indent 4 }}
-{{ end }}
 
-{{ if $.Values.configMap.tc-server }}
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -35,7 +33,7 @@ data:
 
     set -x
     case "$HOSTNAME" in
-{{- range $index, $value := .Values.teamcity.nodes }}
+{{- range $index, $value := $.Values.teamcity.nodes }}
     "{{ $.Values.name }}-{{ $index }}")
       export ROOT_URL=http://{{ $.Values.name }}-{{ $index }}.{{ $.Values.name }}-headless.{{ $.Values.namespace}}:8111
       export NODE_ID={{ $.Values.name }}-{{ $index }}

@@ -57,12 +57,10 @@ database:
   name: teamcity # имя базы данных, созданной ранее 
   user: teamcity # пользователь базы данных 
 
-configMap:
-  tc-server: ""
+configmap:
   datadirConfig:
     database.properties: |
       connectionUrl=jdbc:mysql://{{ $.Values.database.host }}/{{ .Values.database.name}}?allowPublicKeyRetrieval=true&useSSL=false
       connectionProperties.user={{ $.Values.database.user }}
       connectionProperties.password={{ $.Values.database.password }}
       maxConnections=50
-
