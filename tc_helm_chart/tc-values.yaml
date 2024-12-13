@@ -42,3 +42,12 @@ ingress:
     path: "/"
     name: gitlab-server-svc
     number: 80
+
+database:
+  type: mysql # или postgres в зависимости от вашей базы данных (mysql или postgresql)
+  host: mysql-server # имя сервиса для MySQL или postgresql для PostgreSQL 
+  port: 3306 # или 5432 для PostgreSQL 
+  name: teamcity # имя базы данных, созданной ранее 
+  user: teamcity # пользователь базы данных 
+  password: your_password # пароль пользователя базы данных 
+

@@ -33,5 +33,5 @@ volumeMounts:
 volumes:
   - name: mysql-volume
     hostPath:
-      path: /mnt/tc_data
+      path: /mnt/mysql_data
       type: DirectoryOrCreate
