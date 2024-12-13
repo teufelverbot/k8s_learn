@@ -4,6 +4,13 @@ name: teamcity-server
 secret:
   enabled: true
 
+env:
+- name: MYSQL_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: teamcity-server-secret
+      key: password
+
 servicePorts:
   - port: 80
     targetPort: 8111
@@ -44,10 +51,18 @@ ingress:
     number: 80
 
 database:
-  type: mysql # или postgres в зависимости от вашей базы данных (mysql или postgresql)
-  host: mysql-server # имя сервиса для MySQL или postgresql для PostgreSQL 
+#  type: mysql # или postgres в зависимости от вашей базы данных (mysql или postgresql)
+#  host: mysql-server # имя сервиса для MySQL или postgresql для PostgreSQL 
   port: 3306 # или 5432 для PostgreSQL 
   name: teamcity # имя базы данных, созданной ранее 
   user: teamcity # пользователь базы данных 
-  password: your_password # пароль пользователя базы данных 
+
+configMap:
+  tc-server: ""
+  datadirConfig:
+    database.properties: |
+      connectionUrl=jdbc:mysql://{{ $.Values.database.host }}/{{ .Values.database.name}}?allowPublicKeyRetrieval=true&useSSL=false
+      connectionProperties.user={{ $.Values.database.user }}
+      connectionProperties.password={{ $.Values.database.password }}
+      maxConnections=50
 

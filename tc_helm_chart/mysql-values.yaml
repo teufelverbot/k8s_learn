@@ -4,20 +4,20 @@ image: mysql:5.7
 secret:
   enabled: true
 env:
-  - name: MYSQL_ROOT_PASSWORD
-    valueFrom:
-      secretKeyRef:
-        name: mysql-server-secret
-        key: passwordRoot
-  - name: MYSQL_DATABASE
-    value: teamcity
-  - name: MYSQL_USER
-    value: teamcity
-  - name: MYSQL_PASSWORD
-    valueFrom:
-      secretKeyRef:
-        name: mysql-server-secret
-        key: password
+- name: MYSQL_ROOT_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: mysql-server-secret
+      key: passwordRoot
+- name: MYSQL_DATABASE
+  value: teamcity
+- name: MYSQL_USER
+  value: teamcity
+- name: MYSQL_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: mysql-server-secret
+      key: password
 ports:
 - containerPort: 3306
   protocol: TCP
