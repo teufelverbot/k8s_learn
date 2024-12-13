@@ -4,15 +4,16 @@ kind: Secret
 metadata:
   name: {{ .Values.name }}-secret
 type: Opaque
-{{- if .Values.stringdata }}
+{{- if .Values.secret }}
 stringData:
-  id_ed25519: {{ .Values.stringdata.secret.privatekey -}}
-  password: {{ .Values.stringdata.secret.password -}}
-{{- end }}
-{{- if .Values.secret.data }}
-data:
-  {{- range $key, $val := .Values.data }}
-  {{ $key }}: {{ $val }}
+  {{- range $key, $val := .Values.secret }}
+  {{ $key }}: {{ $val | b64enc | quote }}
   {{- end }}
 {{- end }}
-{{- end }}
+{{- if .Values.secret.data }}
+# data:
+#   {{- range $key, $val := .Values.secret.data }}
+#   {{ $key }}: {{ $val | b64enc | quote }}
+#   {{- end }}
+# {{- end }}
+# {{- end }}
