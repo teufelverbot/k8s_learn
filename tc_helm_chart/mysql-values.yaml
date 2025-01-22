@@ -1,8 +1,7 @@
 name: mysql-server
 replicas: 1
 image: mysql:5.7
-secret:
-  enabled: true
+
 env:
 - name: MYSQL_ROOT_PASSWORD
   valueFrom:

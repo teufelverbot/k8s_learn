@@ -1,4 +1,4 @@
-{{- if $.Values.configmap -}}
+{{- if $.Values.configMap -}}
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -6,7 +6,7 @@ metadata:
   name: {{ $.Values.name }}-datadir-config
 data:
 {{ tpl ($.Values.configMap.datadirConfig | toYaml) $ | indent 4 }}
-
+{{/*
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -51,4 +51,5 @@ data:
     ;;
 {{- end }}
     esac
+*/}}
 {{- end }}

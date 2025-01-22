@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: temporalio-server
+  labels:
+    app: temporalio-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: temporalio-server
+  template:
+    metadata:
+      labels:
+        app: temporalio-server
+    spec:
+      containers:
+      - name: temporalio-server
+        image: temporalio/server:1.26.2
+        ports:
+        - containerPort: 7233

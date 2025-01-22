@@ -1,11 +1,11 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: {{ .Values.name | default .Release.Name }}
+  name: {{ tpl ($.Values.name | toYaml) $ | default .Release.Name }}
   labels:
-    app: {{ .Values.name | default .Release.Name }}
+    app: {{ $.Values.name | default .Release.Name }}
 spec:
-  replicas: {{ .Values.replicas }}
+  replicas: {{ $.Values.replicas }}
   selector:
     matchLabels:
       app: {{ .Values.name }}
@@ -21,10 +21,21 @@ spec:
       containers:
       - name: {{ .Values.name }}
         image: {{ .Values.image }}
+        {{- if .Values.env.sname }}
+        env:
+        {{- range .Values.env }}
+        - name: {{ .name }}
+          valueFrom:
+            secretKeyRef:
+              name: {{ .sname }}
+              key: {{ .skey }}
+        {{- end }}
+        {{ else }}
         env:
         {{- range .Values.env }}
         - name: {{ .name }}
           value: {{ .value }}
+        {{- end }}
         {{- end }}
         ports: 
         {{- range .Values.ports }}

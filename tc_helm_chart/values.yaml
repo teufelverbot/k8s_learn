@@ -9,9 +9,6 @@ ports:
     containerPort: 80
     protocol: TCP
 
-secret:
-  enabled: false
-
 env: []
 
 name: ""
